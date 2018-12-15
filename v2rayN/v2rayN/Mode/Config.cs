@@ -41,14 +41,14 @@ namespace v2rayN.Mode
         public bool muxEnabled { get; set; }
 
         /// <summary>
-        /// 路由=>绕过大陆网址
+        /// 域名解析策略
         /// </summary>
-        public bool chinasites { get; set; }
+        public string domainStrategy { get; set; }
 
         /// <summary>
-        /// 路由=>绕过大陆ip
+        /// 路由模式
         /// </summary>
-        public bool chinaip { get; set; }
+        public string routingMode { get; set; }
 
         /// <summary>
         /// 用户自定义需代理的网址或ip
@@ -412,6 +412,11 @@ namespace v2rayN.Mode
         /// 允许udp
         /// </summary>
         public bool udpEnabled { get; set; }
+
+        /// <summary>
+        /// 开启流量探测
+        /// </summary>
+        public bool sniffingEnabled { get; set; } = true;
     }
 
     [Serializable]

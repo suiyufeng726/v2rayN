@@ -33,6 +33,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chksniffingEnabled2 = new System.Windows.Forms.CheckBox();
+            this.chksniffingEnabled = new System.Windows.Forms.CheckBox();
             this.txtremoteDNS = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.chkmuxEnabled = new System.Windows.Forms.CheckBox();
@@ -51,7 +53,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.txtUseragent = new System.Windows.Forms.TextBox();
@@ -59,8 +60,12 @@
             this.txtUserdirect = new System.Windows.Forms.TextBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.txtUserblock = new System.Windows.Forms.TextBox();
-            this.chkBypassChinasites = new System.Windows.Forms.CheckBox();
-            this.chkBypassChinaip = new System.Windows.Forms.CheckBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.cmbdomainStrategy = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.cmbroutingMode = new System.Windows.Forms.ComboBox();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.chkKcpcongestion = new System.Windows.Forms.CheckBox();
             this.txtKcpwriteBufferSize = new System.Windows.Forms.TextBox();
@@ -92,6 +97,7 @@
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.tabPage5.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.tabPage7.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -124,6 +130,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.chksniffingEnabled2);
+            this.groupBox1.Controls.Add(this.chksniffingEnabled);
             this.groupBox1.Controls.Add(this.txtremoteDNS);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.chkmuxEnabled);
@@ -143,6 +151,18 @@
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
+            // 
+            // chksniffingEnabled2
+            // 
+            resources.ApplyResources(this.chksniffingEnabled2, "chksniffingEnabled2");
+            this.chksniffingEnabled2.Name = "chksniffingEnabled2";
+            this.chksniffingEnabled2.UseVisualStyleBackColor = true;
+            // 
+            // chksniffingEnabled
+            // 
+            resources.ApplyResources(this.chksniffingEnabled, "chksniffingEnabled");
+            this.chksniffingEnabled.Name = "chksniffingEnabled";
+            this.chksniffingEnabled.UseVisualStyleBackColor = true;
             // 
             // txtremoteDNS
             // 
@@ -257,19 +277,11 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.tabControl2);
-            this.groupBox2.Controls.Add(this.chkBypassChinasites);
-            this.groupBox2.Controls.Add(this.chkBypassChinaip);
+            this.groupBox2.Controls.Add(this.panel3);
             resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
-            // 
-            // label4
-            // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.ForeColor = System.Drawing.Color.Brown;
-            this.label4.Name = "label4";
             // 
             // tabControl2
             // 
@@ -316,17 +328,54 @@
             resources.ApplyResources(this.txtUserblock, "txtUserblock");
             this.txtUserblock.Name = "txtUserblock";
             // 
-            // chkBypassChinasites
+            // panel3
             // 
-            resources.ApplyResources(this.chkBypassChinasites, "chkBypassChinasites");
-            this.chkBypassChinasites.Name = "chkBypassChinasites";
-            this.chkBypassChinasites.UseVisualStyleBackColor = true;
+            this.panel3.Controls.Add(this.cmbdomainStrategy);
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.Controls.Add(this.label15);
+            this.panel3.Controls.Add(this.label12);
+            this.panel3.Controls.Add(this.cmbroutingMode);
+            resources.ApplyResources(this.panel3, "panel3");
+            this.panel3.Name = "panel3";
             // 
-            // chkBypassChinaip
+            // cmbdomainStrategy
             // 
-            resources.ApplyResources(this.chkBypassChinaip, "chkBypassChinaip");
-            this.chkBypassChinaip.Name = "chkBypassChinaip";
-            this.chkBypassChinaip.UseVisualStyleBackColor = true;
+            this.cmbdomainStrategy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbdomainStrategy.FormattingEnabled = true;
+            this.cmbdomainStrategy.Items.AddRange(new object[] {
+            resources.GetString("cmbdomainStrategy.Items"),
+            resources.GetString("cmbdomainStrategy.Items1"),
+            resources.GetString("cmbdomainStrategy.Items2")});
+            resources.ApplyResources(this.cmbdomainStrategy, "cmbdomainStrategy");
+            this.cmbdomainStrategy.Name = "cmbdomainStrategy";
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.ForeColor = System.Drawing.Color.Brown;
+            this.label4.Name = "label4";
+            // 
+            // label15
+            // 
+            resources.ApplyResources(this.label15, "label15");
+            this.label15.Name = "label15";
+            // 
+            // label12
+            // 
+            resources.ApplyResources(this.label12, "label12");
+            this.label12.Name = "label12";
+            // 
+            // cmbroutingMode
+            // 
+            this.cmbroutingMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbroutingMode.FormattingEnabled = true;
+            this.cmbroutingMode.Items.AddRange(new object[] {
+            resources.GetString("cmbroutingMode.Items"),
+            resources.GetString("cmbroutingMode.Items1"),
+            resources.GetString("cmbroutingMode.Items2"),
+            resources.GetString("cmbroutingMode.Items3")});
+            resources.ApplyResources(this.cmbroutingMode, "cmbroutingMode");
+            this.cmbroutingMode.Name = "cmbroutingMode";
             // 
             // tabPage6
             // 
@@ -481,7 +530,6 @@
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.tabControl2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
@@ -489,6 +537,8 @@
             this.tabPage4.PerformLayout();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
             this.tabPage7.ResumeLayout(false);
@@ -514,8 +564,6 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.CheckBox chkBypassChinasites;
-        private System.Windows.Forms.CheckBox chkBypassChinaip;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox cmbprotocol;
         private System.Windows.Forms.Label label1;
@@ -554,5 +602,12 @@
         private System.Windows.Forms.CheckBox chkAllowLANConn;
         private System.Windows.Forms.TextBox txtremoteDNS;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.ComboBox cmbdomainStrategy;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ComboBox cmbroutingMode;
+        private System.Windows.Forms.CheckBox chksniffingEnabled;
+        private System.Windows.Forms.CheckBox chksniffingEnabled2;
     }
 }

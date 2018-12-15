@@ -86,7 +86,7 @@ namespace v2rayN
         /// <summary>
         /// 代理 tag值
         /// </summary>
-        public const string agentTag = "agentout";
+        public const string agentTag = "proxy";
 
         /// <summary>
         /// 直连 tag值
@@ -96,7 +96,7 @@ namespace v2rayN
         /// <summary>
         /// 阻止 tag值
         /// </summary>
-        public const string blockTag = "blockout";
+        public const string blockTag = "block";
 
         /// <summary>
         /// vmess

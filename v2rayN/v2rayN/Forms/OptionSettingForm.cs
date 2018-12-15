@@ -42,11 +42,13 @@ namespace v2rayN.Forms
                 txtlocalPort.Text = config.inbound[0].localPort.ToString();
                 cmbprotocol.Text = config.inbound[0].protocol.ToString();
                 chkudpEnabled.Checked = config.inbound[0].udpEnabled;
+                chksniffingEnabled.Checked = config.inbound[0].sniffingEnabled;
                 if (config.inbound.Count > 1)
                 {
                     txtlocalPort2.Text = config.inbound[1].localPort.ToString();
                     cmbprotocol2.Text = config.inbound[1].protocol.ToString();
                     chkudpEnabled2.Checked = config.inbound[1].udpEnabled;
+                    chksniffingEnabled2.Checked = config.inbound[1].sniffingEnabled;
                     chkAllowIn2.Checked = true;
                 }
                 else
@@ -66,8 +68,10 @@ namespace v2rayN.Forms
         private void InitRouting()
         {
             //路由
-            chkBypassChinasites.Checked = config.chinasites;
-            chkBypassChinaip.Checked = config.chinaip;
+            cmbdomainStrategy.Text = config.domainStrategy;
+            int routingMode = 0;
+            int.TryParse(config.routingMode, out routingMode);
+            cmbroutingMode.SelectedIndex = routingMode;
 
             txtUseragent.Text = Utils.List2String(config.useragent);
             txtUserdirect.Text = Utils.List2String(config.userdirect);
@@ -152,6 +156,7 @@ namespace v2rayN.Forms
             string localPort = txtlocalPort.Text.Trim();
             string protocol = cmbprotocol.Text.Trim();
             bool udpEnabled = chkudpEnabled.Checked;
+            bool sniffingEnabled = chksniffingEnabled.Checked;
             if (Utils.IsNullOrEmpty(localPort) || !Utils.IsNumberic(localPort))
             {
                 UI.Show(UIRes.I18N("FillLocalListeningPort"));
@@ -165,11 +170,13 @@ namespace v2rayN.Forms
             config.inbound[0].localPort = Utils.ToInt(localPort);
             config.inbound[0].protocol = protocol;
             config.inbound[0].udpEnabled = udpEnabled;
+            config.inbound[0].sniffingEnabled = sniffingEnabled;
 
             //本地监听2
             string localPort2 = txtlocalPort2.Text.Trim();
             string protocol2 = cmbprotocol2.Text.Trim();
             bool udpEnabled2 = chkudpEnabled2.Checked;
+            bool sniffingEnabled2 = chksniffingEnabled2.Checked;
             if (chkAllowIn2.Checked)
             {
                 if (Utils.IsNullOrEmpty(localPort2) || !Utils.IsNumberic(localPort2))
@@ -189,6 +196,7 @@ namespace v2rayN.Forms
                 config.inbound[1].localPort = Utils.ToInt(localPort2);
                 config.inbound[1].protocol = protocol2;
                 config.inbound[1].udpEnabled = udpEnabled2;
+                config.inbound[1].sniffingEnabled = sniffingEnabled2;
             }
             else
             {
@@ -217,16 +225,16 @@ namespace v2rayN.Forms
         /// <returns></returns>
         private int SaveRouting()
         {
-            //路由
-            bool bypassChinasites = chkBypassChinasites.Checked;
-            bool bypassChinaip = chkBypassChinaip.Checked;
+            //路由            
+            string domainStrategy = cmbdomainStrategy.Text;
+            string routingMode = cmbroutingMode.SelectedIndex.ToString();
 
             string useragent = txtUseragent.Text.Trim();
             string userdirect = txtUserdirect.Text.Trim();
             string userblock = txtUserblock.Text.Trim();
 
-            config.chinasites = bypassChinasites;
-            config.chinaip = bypassChinaip;
+            config.domainStrategy = domainStrategy;
+            config.routingMode = routingMode;
 
             config.useragent = Utils.String2List(useragent);
             config.userdirect = Utils.String2List(userdirect);
@@ -303,6 +311,6 @@ namespace v2rayN.Forms
             cmbprotocol2.Enabled =
             chkudpEnabled2.Enabled = blAllow2;
         }
-        
+
     }
 }

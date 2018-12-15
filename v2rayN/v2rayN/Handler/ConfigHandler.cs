@@ -35,10 +35,6 @@ namespace v2rayN.Handler
                 config.loglevel = "warning";
                 config.vmess = new List<VmessItem>();
 
-                //路由
-                config.chinasites = false;
-                config.chinaip = false;
-
                 //Mux
                 config.muxEnabled = true;
 
@@ -54,6 +50,7 @@ namespace v2rayN.Handler
                 inItem.protocol = "socks";
                 inItem.localPort = 1080;
                 inItem.udpEnabled = true;
+                inItem.sniffingEnabled = true;
 
                 config.inbound.Add(inItem);
 
@@ -73,6 +70,14 @@ namespace v2rayN.Handler
                 }
             }
             //路由规则
+            if (Utils.IsNullOrEmpty(config.domainStrategy))
+            {
+                config.domainStrategy = "IPIfNonMatch";
+            }
+            if (Utils.IsNullOrEmpty(config.routingMode))
+            {
+                config.routingMode = "0";
+            }
             if (config.useragent == null)
             {
                 config.useragent = new List<string>();
