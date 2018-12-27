@@ -527,12 +527,13 @@ namespace v2rayN.Handler
                 string[] arrDNS = config.remoteDNS.Split(',');
                 foreach (string str in arrDNS)
                 {
-                    if (Utils.IsIP(str))
-                    {
-                        servers.Add(str);
-                    }
+                    //if (Utils.IsIP(str))
+                    //{
+                    servers.Add(str);
+                    //}
                 }
-                servers.Add("localhost");
+                //servers.Add("localhost");
+                v2rayConfig.dns = new Mode.Dns();
                 v2rayConfig.dns.servers = servers;
             }
             catch
