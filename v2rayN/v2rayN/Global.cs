@@ -21,7 +21,7 @@ namespace v2rayN
         ///  
         /// </summary>
         public const string GithubIssuesUrl = @"https://github.com/2dust/v2rayN/issues";
-        
+
 
         /// <summary>
         /// SpeedTestUrl
@@ -30,6 +30,11 @@ namespace v2rayN
         //public const string SpeedTestUrl = @"http://speedtest.tokyo2.linode.com/100MB-tokyo2.bin";
         public const string SpeedTestUrl = @"http://speedtest-sfo2.digitalocean.com/10mb.test";
 
+
+        /// <summary>
+        /// CustomRoutingListUrl
+        /// </summary>
+        public const string CustomRoutingListUrl = @"https://raw.githubusercontent.com/2dust/v2rayCustomRoutingList/master/";
 
         /// <summary>
         /// 本软件配置文件名

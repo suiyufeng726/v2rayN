@@ -147,11 +147,18 @@ namespace v2rayN
         /// </summary>
         /// <param name="lst"></param>
         /// <returns></returns>
-        public static string List2String(List<string> lst)
+        public static string List2String(List<string> lst, bool wrap = false)
         {
             try
             {
-                return string.Join(",", lst.ToArray());
+                if (wrap)
+                {
+                    return string.Join(",\r\n", lst.ToArray());
+                }
+                else
+                {
+                    return string.Join(",", lst.ToArray());
+                }
             }
             catch
             {
@@ -167,6 +174,7 @@ namespace v2rayN
         {
             try
             {
+                str = str.Replace("\r\n", "");
                 return new List<string>(str.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries));
             }
             catch
@@ -291,6 +299,20 @@ namespace v2rayN
 
             //清除要验证字符串中的空格
             //ip = ip.Trim();
+            //可能是CIDR
+            if (ip.IndexOf(@"/") > 0)
+            {
+                var cidr = ip.Split('/');
+                if (cidr.Length == 2)
+                {
+                    if (!IsNumberic(cidr[0]))
+                    {
+                        return false;
+                    }
+                    ip = cidr[0];
+                }
+            }
+
 
             //模式字符串
             string pattern = @"^((2[0-4]\d|25[0-5]|[01]?\d\d?)\.){3}(2[0-4]\d|25[0-5]|[01]?\d\d?)$";

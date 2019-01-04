@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Text;
 using System.Windows.Forms;
@@ -73,9 +74,9 @@ namespace v2rayN.Forms
             int.TryParse(config.routingMode, out routingMode);
             cmbroutingMode.SelectedIndex = routingMode;
 
-            txtUseragent.Text = Utils.List2String(config.useragent);
-            txtUserdirect.Text = Utils.List2String(config.userdirect);
-            txtUserblock.Text = Utils.List2String(config.userblock);
+            txtUseragent.Text = Utils.List2String(config.useragent, true);
+            txtUserdirect.Text = Utils.List2String(config.userdirect, true);
+            txtUserblock.Text = Utils.List2String(config.userblock, true);
         }
 
         /// <summary>
@@ -312,5 +313,49 @@ namespace v2rayN.Forms
             chkudpEnabled2.Enabled = blAllow2;
         }
 
+        private void btnSetDefRountingRule_Click(object sender, EventArgs e)
+        {
+            var lstUrl = new List<string>();
+            lstUrl.Add(Global.CustomRoutingListUrl + "proxy");
+            lstUrl.Add(Global.CustomRoutingListUrl + "direct");
+            lstUrl.Add(Global.CustomRoutingListUrl + "block");
+
+            var lstTxt = new List<TextBox>();
+            lstTxt.Add(txtUseragent);
+            lstTxt.Add(txtUserdirect);
+            lstTxt.Add(txtUserblock);
+
+            for (int k = 0; k < lstUrl.Count; k++)
+            {
+                var txt = lstTxt[k];
+                V2rayUpdateHandle v2rayUpdateHandle3 = new V2rayUpdateHandle();
+                v2rayUpdateHandle3.UpdateCompleted += (sender2, args) =>
+                {
+                    if (args.Success)
+                    {
+                        var result = args.Msg;
+                        if (Utils.IsNullOrEmpty(result))
+                        {
+                            return;
+                        }
+                        txt.Text = result;
+                    }
+                    else
+                    {
+                        AppendText(false, args.Msg);
+                    }
+                };
+                v2rayUpdateHandle3.Error += (sender2, args) =>
+                {
+                    AppendText(true, args.GetException().Message);
+                };
+
+                v2rayUpdateHandle3.WebDownloadString(lstUrl[k]);
+            }
+        }
+        void AppendText(bool notify, string text)
+        {
+            labRoutingTips.Text = text;
+        }
     }
 }

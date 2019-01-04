@@ -202,13 +202,30 @@
   <data name="tabPage5.Text" xml:space="preserve">
     <value>  阻止的Domain或IP  </value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnSetDefRountingRule.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnSetDefRountingRule.Location" type="System.Drawing.Point, System.Drawing">
+    <value>381, 43</value>
+  </data>
+  <data name="btnSetDefRountingRule.Size" type="System.Drawing.Size, System.Drawing">
+    <value>201, 23</value>
+  </data>
+  <data name="btnSetDefRountingRule.Text" xml:space="preserve">
+    <value>一键设置默认自定义路由规则</value>
+  </data>
   <data name="cmbdomainStrategy.Size" type="System.Drawing.Size, System.Drawing">
     <value>232, 20</value>
   </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="labRoutingTips.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labRoutingTips.Size" type="System.Drawing.Size, System.Drawing">
     <value>383, 12</value>
   </data>
-  <data name="label4.Text" xml:space="preserve">
+  <data name="labRoutingTips.Text" xml:space="preserve">
     <value>*设置的规则，用逗号(,)隔开;支持Domain(纯字符串/正则/子域名)和IP</value>
   </data>
   <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
