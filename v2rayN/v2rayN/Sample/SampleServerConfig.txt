@@ -28,9 +28,7 @@
 		"tag": "block"
 	}],
 	"routing": {
-		"strategy": "rules",
-		"settings": {
-			"rules": []
-		}
+		"domainStrategy": "IPIfNonMatch",
+		"rules": []
 	}
 }

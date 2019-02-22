@@ -178,10 +178,9 @@ namespace v2rayN.Handler
             try
             {
                 if (v2rayConfig.routing != null
-                  && v2rayConfig.routing.settings != null
-                  && v2rayConfig.routing.settings.rules != null)
+                  && v2rayConfig.routing.rules != null)
                 {
-                    v2rayConfig.routing.settings.domainStrategy = config.domainStrategy;
+                    v2rayConfig.routing.domainStrategy = config.domainStrategy;
 
                     //自定义
                     //需代理
@@ -256,11 +255,11 @@ namespace v2rayN.Handler
                     }
                     if (rulesDomain.domain.Count > 0)
                     {
-                        v2rayConfig.routing.settings.rules.Add(rulesDomain);
+                        v2rayConfig.routing.rules.Add(rulesDomain);
                     }
                     if (rulesIP.ip.Count > 0)
                     {
-                        v2rayConfig.routing.settings.rules.Add(rulesIP);
+                        v2rayConfig.routing.rules.Add(rulesIP);
                     }
                 }
             }
@@ -286,7 +285,7 @@ namespace v2rayN.Handler
                         rulesItem.ip = new List<string>();
                         rulesItem.ip.Add($"geoip:{code}");
 
-                        v2rayConfig.routing.settings.rules.Add(rulesItem);
+                        v2rayConfig.routing.rules.Add(rulesItem);
                     }
 
                     if (ipOrDomain == "domain" || ipOrDomain == "")
@@ -296,7 +295,7 @@ namespace v2rayN.Handler
                         rulesItem.outboundTag = Global.directTag;
                         rulesItem.domain = new List<string>();
                         rulesItem.domain.Add($"geosite:{code}");
-                        v2rayConfig.routing.settings.rules.Add(rulesItem);
+                        v2rayConfig.routing.rules.Add(rulesItem);
                     }
                 }
             }
@@ -1082,13 +1081,14 @@ namespace v2rayN.Handler
                         return null;
                     }
                     string[] arr21 = arr1[0].Split(':');
-                    string[] arr22 = arr1[1].Split(':');
-                    if (arr21.Length != 2 || arr21.Length != 2)
+                    //string[] arr22 = arr1[1].Split(':');
+                    int indexPort = arr1[1].LastIndexOf(":");
+                    if (arr21.Length != 2 || indexPort < 0)
                     {
                         return null;
                     }
-                    vmessItem.address = arr22[0];
-                    vmessItem.port = Utils.ToInt(arr22[1]);
+                    vmessItem.address = arr1[1].Substring(0, indexPort);
+                    vmessItem.port = Utils.ToInt(arr1[1].Substring(indexPort + 1, arr1[1].Length - (indexPort + 1)));
                     vmessItem.security = arr21[0];
                     vmessItem.id = arr21[1];
                 }

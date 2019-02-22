@@ -265,9 +265,9 @@ namespace v2rayN.Mode
         /// 
         /// </summary>
         public List<string> domain { get; set; }
-    }
+    }     
 
-    public class Routingsettings
+    public class Routing
     {
         /// <summary>
         /// 
@@ -277,18 +277,6 @@ namespace v2rayN.Mode
         /// 
         /// </summary>
         public List<RulesItem> rules { get; set; }
-    }
-
-    public class Routing
-    {
-        /// <summary>
-        /// 
-        /// </summary>
-        public string strategy { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public Routingsettings settings { get; set; }
     }
 
     public class StreamSettings

@@ -65,10 +65,7 @@
 		}
 	],
 	"routing": {
-		"strategy": "rules",
-		"settings": {
-			"domainStrategy": "IPIfNonMatch",
-			"rules": []
-		}
+		"domainStrategy": "IPIfNonMatch",
+		"rules": []
 	}
 }

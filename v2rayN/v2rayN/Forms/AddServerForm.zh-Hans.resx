@@ -197,7 +197,7 @@
     <value>155, 12</value>
   </data>
   <data name="label8.Text" xml:space="preserve">
-    <value>*随便选,建议(aes-128-gcm)</value>
+    <value>*随便选,建议(auto)</value>
   </data>
   <data name="cmbNetwork.Location" type="System.Drawing.Point, System.Drawing">
     <value>127, 171</value>

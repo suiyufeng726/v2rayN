@@ -71,7 +71,7 @@ namespace v2rayN
         /// <summary>
         /// 默认加密方式
         /// </summary>
-        public const string DefaultSecurity = "aes-128-gcm";
+        public const string DefaultSecurity = "auto";
 
         /// <summary>
         /// 默认传输协议
