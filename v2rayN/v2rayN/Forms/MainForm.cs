@@ -279,7 +279,7 @@ namespace v2rayN.Forms
 
             if (config.vmess[index].configType == (int)EConfigType.Vmess)
             {
-                AddServerForm fm = new AddServerForm();
+                var fm = new AddServerForm();
                 fm.EditIndex = index;
                 if (fm.ShowDialog() == DialogResult.OK)
                 {
@@ -290,18 +290,27 @@ namespace v2rayN.Forms
             }
             else if (config.vmess[index].configType == (int)EConfigType.Shadowsocks)
             {
-                AddServer3Form fm = new AddServer3Form();
+                var fm = new AddServer3Form();
                 fm.EditIndex = index;
                 if (fm.ShowDialog() == DialogResult.OK)
                 {
-                    //刷新
+                    RefreshServers();
+                    LoadV2ray();
+                }
+            }
+            else if (config.vmess[index].configType == (int)EConfigType.Socks)
+            {
+                var fm = new AddServer4Form();
+                fm.EditIndex = index;
+                if (fm.ShowDialog() == DialogResult.OK)
+                {
                     RefreshServers();
                     LoadV2ray();
                 }
             }
             else
             {
-                AddServer2Form fm2 = new AddServer2Form();
+                var fm2 = new AddServer2Form();
                 fm2.EditIndex = index;
                 if (fm2.ShowDialog() == DialogResult.OK)
                 {
@@ -310,7 +319,6 @@ namespace v2rayN.Forms
                     LoadV2ray();
                 }
             }
-
         }
 
         private void lvServers_KeyDown(object sender, KeyEventArgs e)
@@ -648,8 +656,20 @@ namespace v2rayN.Forms
 
         private void menuAddShadowsocksServer_Click(object sender, EventArgs e)
         {
-            HideForm();
-            AddServer3Form fm = new AddServer3Form();
+            var fm = new AddServer3Form();
+            fm.EditIndex = -1;
+            if (fm.ShowDialog() == DialogResult.OK)
+            {
+                //刷新
+                RefreshServers();
+                LoadV2ray();
+            }
+            ShowForm();
+        }
+        
+        private void menuAddSocksServer_Click(object sender, EventArgs e)
+        { 
+            var fm = new AddServer4Form();
             fm.EditIndex = -1;
             if (fm.ShowDialog() == DialogResult.OK)
             {
@@ -919,7 +939,7 @@ namespace v2rayN.Forms
                 {
                     SetTestResult(lvSelecteds[testCounter - 1], args.GetException().Message);
                     AppendText(true, args.GetException().Message);
-
+                     
                     if (ServerSpeedTestSub(testCounter, url) != 0)
                     {
                         RefreshServers();
@@ -1221,6 +1241,10 @@ namespace v2rayN.Forms
             System.Diagnostics.Process.Start(Global.AboutUrl);
         }
 
+        private void tsbPromotion_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(Global.PromotionUrl);
+        }
         #endregion
 
         #region ScanScreen

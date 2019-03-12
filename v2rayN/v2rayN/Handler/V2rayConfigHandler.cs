@@ -384,6 +384,27 @@ namespace v2rayN.Handler
                     outbound.protocol = "shadowsocks";
                     outbound.settings.vnext = null;
                 }
+                else if (config.configType() == (int)EConfigType.Socks)
+                {
+                    ServersItem serversItem;
+                    if (outbound.settings.servers.Count <= 0)
+                    {
+                        serversItem = new ServersItem();
+                        outbound.settings.servers.Add(serversItem);
+                    }
+                    else
+                    {
+                        serversItem = outbound.settings.servers[0];
+                    }
+                    //远程服务器地址和端口
+                    serversItem.address = config.address();
+                    serversItem.port = config.port();
+
+                    outbound.mux.enabled = false;
+
+                    outbound.protocol = "socks";
+                    outbound.settings.vnext = null;
+                }
             }
             catch
             {
@@ -1091,6 +1112,43 @@ namespace v2rayN.Handler
                     vmessItem.port = Utils.ToInt(arr1[1].Substring(indexPort + 1, arr1[1].Length - (indexPort + 1)));
                     vmessItem.security = arr21[0];
                     vmessItem.id = arr21[1];
+                }
+                else if (result.StartsWith(Global.socksProtocol))
+                {
+                    msg = UIRes.I18N("ConfigurationFormatIncorrect");
+
+                    vmessItem.configType = (int)EConfigType.Socks;
+                    result = result.Substring(Global.socksProtocol.Length);
+                    //remark
+                    int indexRemark = result.IndexOf("#");
+                    if (indexRemark > 0)
+                    {
+                        try
+                        {
+                            vmessItem.remarks = WebUtility.UrlDecode(result.Substring(indexRemark + 1, result.Length - indexRemark - 1));
+                        }
+                        catch { }
+                        result = result.Substring(0, indexRemark);
+                    }
+                    //part decode
+                    int indexS = result.IndexOf(":");
+                    if (indexS > 0)
+                    {
+                    }
+                    else
+                    {
+                        result = Utils.Base64Decode(result);
+                    }
+
+                   
+                    string[] arr21 = result.Split(':');
+                    int indexPort = result.LastIndexOf(":");
+                    if (arr21.Length != 2 || indexPort < 0)
+                    {
+                        return null;
+                    }
+                    vmessItem.address = result.Substring(0, indexPort);
+                    vmessItem.port = Utils.ToInt(result.Substring(indexPort + 1, result.Length - (indexPort + 1)));
                 }
                 else
                 {

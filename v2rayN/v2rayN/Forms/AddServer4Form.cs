@@ -5,17 +5,17 @@ using v2rayN.Mode;
 
 namespace v2rayN.Forms
 {
-    public partial class AddServer3Form : BaseForm
+    public partial class AddServer4Form : BaseForm
     {
         public int EditIndex { get; set; }
         VmessItem vmessItem = null;
 
-        public AddServer3Form()
+        public AddServer4Form()
         {
             InitializeComponent();
         }
 
-        private void AddServer3Form_Load(object sender, EventArgs e)
+        private void AddServer4Form_Load(object sender, EventArgs e)
         {
             if (EditIndex >= 0)
             {
@@ -34,11 +34,8 @@ namespace v2rayN.Forms
         /// </summary>
         private void BindingServer()
         {
-
             txtAddress.Text = vmessItem.address;
             txtPort.Text = vmessItem.port.ToString();
-            txtId.Text = vmessItem.id;
-            cmbSecurity.Text = vmessItem.security;
             txtRemarks.Text = vmessItem.remarks;
         }
 
@@ -50,8 +47,6 @@ namespace v2rayN.Forms
         {
             txtAddress.Text = "";
             txtPort.Text = "";
-            txtId.Text = "";
-            cmbSecurity.Text = Global.DefaultSecurity;
             txtRemarks.Text = "";
         }
 
@@ -59,8 +54,6 @@ namespace v2rayN.Forms
         {
             string address = txtAddress.Text;
             string port = txtPort.Text;
-            string id = txtId.Text;
-            string security = cmbSecurity.Text;
             string remarks = txtRemarks.Text;
 
             if (Utils.IsNullOrEmpty(address))
@@ -73,24 +66,12 @@ namespace v2rayN.Forms
                 UI.Show(UIRes.I18N("FillCorrectServerPort"));
                 return;
             }
-            if (Utils.IsNullOrEmpty(id))
-            {
-                UI.Show(UIRes.I18N("FillPassword"));
-                return;
-            }
-            if (Utils.IsNullOrEmpty(security))
-            {
-                UI.Show(UIRes.I18N("PleaseSelectEncryption"));
-                return;
-            }
 
             vmessItem.address = address;
             vmessItem.port = Utils.ToInt(port);
-            vmessItem.id = id;
-            vmessItem.security = security;
             vmessItem.remarks = remarks;
 
-            if (ConfigHandler.AddShadowsocksServer(ref config, vmessItem, EditIndex) == 0)
+            if (ConfigHandler.AddSocksServer(ref config, vmessItem, EditIndex) == 0)
             {
                 this.DialogResult = DialogResult.OK;
             }
@@ -131,11 +112,9 @@ namespace v2rayN.Forms
 
             txtAddress.Text = vmessItem.address;
             txtPort.Text = vmessItem.port.ToString();
-            cmbSecurity.Text = vmessItem.security;
-            txtId.Text = vmessItem.id;
             txtRemarks.Text = vmessItem.remarks;
-        }
-         
+        }        
+
         #endregion
          
 

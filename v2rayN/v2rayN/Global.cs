@@ -26,8 +26,6 @@ namespace v2rayN
         /// <summary>
         /// SpeedTestUrl
         /// </summary>
-        //public const string SpeedTestUrl = @"https://github.com/2dust/v2rayN/releases/download/2.1/test.zip";
-        //public const string SpeedTestUrl = @"http://speedtest.tokyo2.linode.com/100MB-tokyo2.bin";
         public const string SpeedTestUrl = @"http://speedtest-sfo2.digitalocean.com/10mb.test";
 
 
@@ -35,6 +33,11 @@ namespace v2rayN
         /// CustomRoutingListUrl
         /// </summary>
         public const string CustomRoutingListUrl = @"https://raw.githubusercontent.com/2dust/v2rayCustomRoutingList/master/";
+
+        /// <summary>
+        /// PromotionUrl
+        /// </summary>
+        public const string PromotionUrl = @"https://1.2345345.xyz/ads.html";
 
         /// <summary>
         /// 本软件配置文件名
@@ -111,6 +114,10 @@ namespace v2rayN
         /// shadowsocks
         /// </summary>
         public const string ssProtocol = "ss://";
+        /// <summary>
+        /// socks
+        /// </summary>
+        public const string socksProtocol = "socks://";
 
         /// <summary>
         /// pac

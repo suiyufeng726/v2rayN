@@ -119,7 +119,7 @@ namespace v2rayN.Mode
         {
             if (index < 0)
             {
-                return 1080;
+                return 10808;
             }
             return vmess[index].port;
         }
@@ -290,6 +290,10 @@ namespace v2rayN.Mode
                 summary += string.Format("{0}({1}:{2})", remarks, addr, port);
             }
             else if (configType == (int)EConfigType.Shadowsocks)
+            {
+                summary += string.Format("{0}({1}:{2})", remarks, addr, port);
+            }
+            else if (configType == (int)EConfigType.Socks)
             {
                 summary += string.Format("{0}({1}:{2})", remarks, addr, port);
             }

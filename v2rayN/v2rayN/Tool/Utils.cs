@@ -521,13 +521,17 @@ namespace v2rayN
             {
                 long totalTime = 0;
                 int timeout = 120;
-                int echoNum = 3;
+                int echoNum = 2;
                 Ping pingSender = new Ping();
                 for (int i = 0; i < echoNum; i++)
                 {
                     PingReply reply = pingSender.Send(host, timeout);
                     if (reply.Status == IPStatus.Success)
                     {
+                        if (reply.RoundtripTime < 0)
+                        {
+                            continue;
+                        }
                         totalTime += reply.RoundtripTime;
                     }
                 }

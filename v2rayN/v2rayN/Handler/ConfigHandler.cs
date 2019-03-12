@@ -48,7 +48,7 @@ namespace v2rayN.Handler
                 config.inbound = new List<InItem>();
                 InItem inItem = new InItem();
                 inItem.protocol = "socks";
-                inItem.localPort = 1080;
+                inItem.localPort = 10808;
                 inItem.udpEnabled = true;
                 inItem.sniffingEnabled = true;
 
@@ -344,6 +344,19 @@ namespace v2rayN.Handler
                     url = Utils.Base64Encode(url);
                     url = string.Format("{0}{1}{2}", Global.ssProtocol, url, remark);
                 }
+                else if (vmessItem.configType == (int)EConfigType.Socks)
+                {
+                    var remark = string.Empty;
+                    if (!Utils.IsNullOrEmpty(vmessItem.remarks))
+                    {
+                        remark = "#" + WebUtility.UrlEncode(vmessItem.remarks);
+                    }
+                    url = string.Format("{0}:{1}",
+                        vmessItem.address,
+                        vmessItem.port);
+                    url = Utils.Base64Encode(url);
+                    url = string.Format("{0}{1}{2}", Global.socksProtocol, url, remark);
+                }
                 else
                 {
                 }
@@ -561,6 +574,42 @@ namespace v2rayN.Handler
         }
 
         /// <summary>
+        /// 添加服务器或编辑
+        /// </summary>
+        /// <param name="config"></param>
+        /// <param name="vmessItem"></param>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public static int AddSocksServer(ref Config config, VmessItem vmessItem, int index)
+        {
+            vmessItem.configVersion = 2;
+            vmessItem.configType = (int)EConfigType.Socks;
+            if (index >= 0)
+            {
+                //修改
+                config.vmess[index] = vmessItem;
+                if (config.index.Equals(index))
+                {
+                    Global.reloadV2ray = true;
+                }
+            }
+            else
+            {
+                //添加
+                config.vmess.Add(vmessItem);
+                if (config.vmess.Count == 1)
+                {
+                    config.index = 0;
+                    Global.reloadV2ray = true;
+                }
+            }
+
+            ToJsonFile(config);
+
+            return 0;
+        }
+
+        /// <summary>
         /// 配置文件版本升级
         /// </summary>
         /// <param name="vmessItem"></param>
@@ -665,6 +714,13 @@ namespace v2rayN.Handler
                 else if (vmessItem.configType == (int)EConfigType.Shadowsocks)
                 {
                     if (AddShadowsocksServer(ref config, vmessItem, -1) == 0)
+                    {
+                        countServers++;
+                    }
+                }
+                else if (vmessItem.configType == (int)EConfigType.Socks)
+                {
+                    if (AddSocksServer(ref config, vmessItem, -1) == 0)
                     {
                         countServers++;
                     }
