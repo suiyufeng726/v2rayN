@@ -211,7 +211,11 @@ namespace v2rayN
         {
             try
             {
-                plainText = plainText.Trim();
+                plainText = plainText.Trim()
+                    .Replace("\n", "")
+                    .Replace("r\n", "")
+                    .Replace("\r", "")
+                    .Replace(" ", "");
                 if (plainText.Length % 4 > 0)
                 {
                     plainText = plainText.PadRight(plainText.Length + 4 - plainText.Length % 4, '=');
