@@ -133,6 +133,18 @@
     <value>不清楚则保持默认值</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="label24.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 12</value>
+  </data>
+  <data name="label24.Text" xml:space="preserve">
+    <value>3)QUIC 加密密钥</value>
+  </data>
+  <data name="label23.Size" type="System.Drawing.Size, System.Drawing">
+    <value>95, 12</value>
+  </data>
+  <data name="label23.Text" xml:space="preserve">
+    <value>4)QUIC 加密方式</value>
+  </data>
   <data name="label22.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 12</value>
   </data>
@@ -164,16 +176,16 @@
     <value>底层传输安全</value>
   </data>
   <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>161, 12</value>
+    <value>197, 12</value>
   </data>
   <data name="label12.Text" xml:space="preserve">
-    <value>*tcp或kcp伪装类型,默认none</value>
+    <value>*tcp或kcp或QUIC伪装类型,默认none</value>
   </data>
   <data name="txtRequestHost.Location" type="System.Drawing.Point, System.Drawing">
     <value>124, 58</value>
   </data>
   <data name="txtRequestHost.Size" type="System.Drawing.Size, System.Drawing">
-    <value>334, 38</value>
+    <value>334, 51</value>
   </data>
   <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
     <value>89, 12</value>
@@ -194,7 +206,7 @@
     <value>*默认tcp,选错会无法连接</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 12</value>
+    <value>113, 12</value>
   </data>
   <data name="label8.Text" xml:space="preserve">
     <value>*随便选,建议(auto)</value>
@@ -257,28 +269,28 @@
     <value>确定(&amp;O)</value>
   </data>
   <data name="MenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 20</value>
+    <value>92, 21</value>
   </data>
   <data name="MenuItem1.Text" xml:space="preserve">
     <value>导入配置文件</value>
   </data>
   <data name="MenuItemImportClient.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 22</value>
+    <value>171, 22</value>
   </data>
   <data name="MenuItemImportClient.Text" xml:space="preserve">
     <value>导入客户端配置</value>
   </data>
   <data name="MenuItemImportServer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 22</value>
+    <value>171, 22</value>
   </data>
   <data name="MenuItemImportServer.Text" xml:space="preserve">
     <value>导入服务端配置</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>157, 6</value>
+    <value>168, 6</value>
   </data>
   <data name="MenuItemImportClipboard.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 22</value>
+    <value>171, 22</value>
   </data>
   <data name="MenuItemImportClipboard.Text" xml:space="preserve">
     <value>从剪贴板导入URL</value>

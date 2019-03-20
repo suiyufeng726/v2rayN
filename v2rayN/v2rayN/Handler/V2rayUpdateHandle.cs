@@ -87,7 +87,7 @@ namespace v2rayN.Handler
         }
 
 
-        public void UpdateV2rayCore(Config config, string url)
+        public void DownloadFileAsync(Config config, string url)
         {
             try
             {

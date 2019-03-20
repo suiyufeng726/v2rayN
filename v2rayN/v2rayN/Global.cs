@@ -26,8 +26,8 @@ namespace v2rayN
         /// <summary>
         /// SpeedTestUrl
         /// </summary>
-        public const string SpeedTestUrl = @"http://speedtest-sfo2.digitalocean.com/10mb.test";
-
+        //public const string SpeedTestUrl = @"http://speedtest-sfo2.digitalocean.com/10mb.test";
+        public const string SpeedTestUrl = @"https://github.com/2dust/v2rayN/releases/download/2.24/v2rayN.zip";
 
         /// <summary>
         /// CustomRoutingListUrl

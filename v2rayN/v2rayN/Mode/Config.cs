@@ -173,7 +173,7 @@ namespace v2rayN.Mode
             {
                 return Global.None;
             }
-            return vmess[index].headerType;
+            return vmess[index].headerType.Replace(" ", "").Trim();
         }
         public string requestHost()
         {
@@ -181,7 +181,7 @@ namespace v2rayN.Mode
             {
                 return string.Empty;
             }
-            return vmess[index].requestHost;
+            return vmess[index].requestHost.Replace(" ", "").Trim();
         }
         public string path()
         {
@@ -189,7 +189,7 @@ namespace v2rayN.Mode
             {
                 return string.Empty;
             }
-            return vmess[index].path;
+            return vmess[index].path.Replace(" ", "").Trim();
         }
         public string streamSecurity()
         {

@@ -95,8 +95,9 @@ namespace v2rayN.Forms
             {
                 cmbHeaderType.Items.Add(Global.TcpHeaderHttp);
             }
-            else if (network.Equals("kcp"))
+            else if (network.Equals("kcp") || network.Equals("quic"))
             {
+                cmbHeaderType.Items.Add("none");
                 cmbHeaderType.Items.Add("srtp");
                 cmbHeaderType.Items.Add("utp");
                 cmbHeaderType.Items.Add("wechat-video");

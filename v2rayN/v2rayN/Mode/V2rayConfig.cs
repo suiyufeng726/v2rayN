@@ -20,7 +20,7 @@ namespace v2rayN.Mode
         /// 传出连接配置
         /// </summary>
         public List<Outbounds> outbounds { get; set; }
- 
+
         /// <summary>
         /// DNS 配置
         /// </summary>
@@ -223,7 +223,7 @@ namespace v2rayN.Mode
         /// 
         /// </summary>
         public bool enabled { get; set; }
-    }       
+    }
 
     public class Response
     {
@@ -265,7 +265,7 @@ namespace v2rayN.Mode
         /// 
         /// </summary>
         public List<string> domain { get; set; }
-    }     
+    }
 
     public class Routing
     {
@@ -311,6 +311,12 @@ namespace v2rayN.Mode
         /// h2传输额外设置
         /// </summary>
         public HttpSettings httpSettings { get; set; }
+
+        /// <summary>
+        /// QUIC
+        /// </summary>
+        public QuicSettings quicSettings { get; set; }
+        
     }
 
     public class TlsSettings
@@ -319,11 +325,11 @@ namespace v2rayN.Mode
         /// 是否允许不安全连接（用于客户端）
         /// </summary>
         public bool allowInsecure { get; set; }
-        
+
         /// <summary>
         /// 
         /// </summary>
-        public string serverName { get; set; }        
+        public string serverName { get; set; }
     }
 
     public class TcpSettings
@@ -426,6 +432,24 @@ namespace v2rayN.Mode
         /// 
         /// </summary>
         public List<string> host { get; set; }
-        
+
     }
+
+    public class QuicSettings
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        public string security { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string key { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Header header { get; set; }
+    }
+
 }

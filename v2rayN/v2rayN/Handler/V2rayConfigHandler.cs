@@ -463,8 +463,8 @@ namespace v2rayN.Handler
                         WsSettings wsSettings = new WsSettings();
                         wsSettings.connectionReuse = true;
 
-                        string host2 = config.requestHost().Replace(" ", "");
-                        string path = config.path().Replace(" ", "");
+                        string host2 = config.requestHost();
+                        string path = config.path();
                         if (!string.IsNullOrWhiteSpace(host2))
                         {
                             wsSettings.headers = new Headers();
@@ -484,18 +484,28 @@ namespace v2rayN.Handler
                     case "h2":
                         HttpSettings httpSettings = new HttpSettings();
 
-                        string host3 = config.requestHost().Replace(" ", "");
+                        string host3 = config.requestHost();
                         if (!string.IsNullOrWhiteSpace(host3))
                         {
                             httpSettings.host = Utils.String2List(host3);
                         }
-                        httpSettings.path = config.path().Replace(" ", "");
+                        httpSettings.path = config.path();
 
                         streamSettings.httpSettings = httpSettings;
 
                         TlsSettings tlsSettings2 = new TlsSettings();
                         tlsSettings2.allowInsecure = config.allowInsecure();
                         streamSettings.tlsSettings = tlsSettings2;
+                        break;
+                    //quic
+                    case "quic":
+                        QuicSettings quicsettings = new QuicSettings();
+                        quicsettings.security = config.requestHost();
+                        quicsettings.key = config.path();
+                        quicsettings.header = new Header();
+                        quicsettings.header.type = config.headerType();
+                        
+                        streamSettings.quicSettings = quicsettings;
                         break;
                     default:
                         //tcp带http伪装
@@ -508,7 +518,7 @@ namespace v2rayN.Handler
 
                             //request填入自定义Host
                             string request = Utils.GetEmbedText(Global.v2raySampleHttprequestFileName);
-                            string[] arrHost = config.requestHost().Replace(" ", "").Split(',');
+                            string[] arrHost = config.requestHost().Split(',');
                             string host = string.Join("\",\"", arrHost);
                             request = request.Replace("$requestHost$", string.Format("\"{0}\"", host));
                             //request = request.Replace("$requestHost$", string.Format("\"{0}\"", config.requestHost()));

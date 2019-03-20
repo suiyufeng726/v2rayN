@@ -895,7 +895,7 @@ namespace v2rayN.Forms
                 SetTestResult(lvSelecteds[index], "testing...");
 
                 v2rayHandler.LoadV2ray(config);
-                v2rayUpdateHandle2.UpdateV2rayCore(config, url);
+                v2rayUpdateHandle2.DownloadFileAsync(config, url);
                 testCounter++;
                 return 0;
             }
@@ -1127,7 +1127,7 @@ namespace v2rayN.Forms
                             }
                             else
                             {
-                                v2rayUpdateHandle.UpdateV2rayCore(config, url);
+                                v2rayUpdateHandle.DownloadFileAsync(config, url);
                             }
                         }));
                     }
