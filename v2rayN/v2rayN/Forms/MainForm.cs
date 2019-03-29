@@ -827,6 +827,7 @@ namespace v2rayN.Forms
         {
             this.WindowState = FormWindowState.Minimized;
             this.Hide();
+            this.notifyMain.Icon = this.Icon;
             this.notifyMain.Visible = true;
             this.ShowInTaskbar = false;
 

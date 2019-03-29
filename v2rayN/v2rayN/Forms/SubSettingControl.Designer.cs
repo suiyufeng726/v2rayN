@@ -56,6 +56,7 @@
             resources.ApplyResources(this.chkEnabled, "chkEnabled");
             this.chkEnabled.Name = "chkEnabled";
             this.chkEnabled.UseVisualStyleBackColor = true;
+            this.chkEnabled.Leave += new System.EventHandler(this.txtRemarks_Leave);
             // 
             // btnRemove
             // 

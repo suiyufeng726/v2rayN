@@ -138,6 +138,10 @@ namespace v2rayN
         /// Language
         /// </summary>
         public const string MyRegKeyLanguage = "CurrentLanguage";
+        /// <summary>
+        /// Icon
+        /// </summary>
+        public const string CustomIconName = "v2rayN.ico";
 
         #endregion
 

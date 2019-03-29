@@ -134,8 +134,8 @@
   <data name="btnRemove.Text" xml:space="preserve">
     <value>&amp;Remove</value>
   </data>
-  <data name="&gt;&gt;txtRemarks.Name" xml:space="preserve">
-    <value>txtRemarks</value>
+  <data name="btnRemove.Location" type="System.Drawing.Point, System.Drawing">
+    <value>484, 21</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnRemove.TabIndex" type="System.Int32, mscorlib">
@@ -216,17 +216,14 @@
   <data name="&gt;&gt;chkEnabled.Name" xml:space="preserve">
     <value>chkEnabled</value>
   </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 25</value>
-  </data>
   <data name="&gt;&gt;txtRemarks.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
   <data name="btnRemove.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;btnRemove.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Address (url)</value>
   </data>
   <data name="chkEnabled.TabIndex" type="System.Int32, mscorlib">
     <value>25</value>
@@ -279,8 +276,8 @@
   <data name="label3.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="btnRemove.Location" type="System.Drawing.Point, System.Drawing">
-    <value>484, 21</value>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 25</value>
   </data>
   <data name="btnRemove.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -297,8 +294,11 @@
   <data name="&gt;&gt;txtUrl.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Address (url)</value>
+  <data name="&gt;&gt;btnRemove.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="&gt;&gt;btnRemove.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -309,8 +309,8 @@
   <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;txtRemarks.Name" xml:space="preserve">
+    <value>txtRemarks</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
     <value>5</value>

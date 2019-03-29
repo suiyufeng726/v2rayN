@@ -504,7 +504,7 @@ namespace v2rayN.Handler
                         quicsettings.key = config.path();
                         quicsettings.header = new Header();
                         quicsettings.header.type = config.headerType();
-                        
+
                         streamSettings.quicSettings = quicsettings;
                         break;
                     default:
@@ -516,17 +516,31 @@ namespace v2rayN.Handler
                             tcpSettings.header = new Header();
                             tcpSettings.header.type = config.headerType();
 
-                            //request填入自定义Host
-                            string request = Utils.GetEmbedText(Global.v2raySampleHttprequestFileName);
-                            string[] arrHost = config.requestHost().Split(',');
-                            string host = string.Join("\",\"", arrHost);
-                            request = request.Replace("$requestHost$", string.Format("\"{0}\"", host));
-                            //request = request.Replace("$requestHost$", string.Format("\"{0}\"", config.requestHost()));
+                            if (iobound.Equals("out"))
+                            {
+                                //request填入自定义Host
+                                string request = Utils.GetEmbedText(Global.v2raySampleHttprequestFileName);
+                                string[] arrHost = config.requestHost().Split(',');
+                                string host = string.Join("\",\"", arrHost);
+                                request = request.Replace("$requestHost$", string.Format("\"{0}\"", host));
+                                //request = request.Replace("$requestHost$", string.Format("\"{0}\"", config.requestHost()));
 
-                            string response = Utils.GetEmbedText(Global.v2raySampleHttpresponseFileName);
+                                //填入自定义Path
+                                string pathHttp = @"/";
+                                if (!Utils.IsNullOrEmpty(config.path()))
+                                {
+                                    string[] arrPath = config.path().Split(',');
+                                    pathHttp = string.Join("\",\"", arrPath);
+                                }
+                                request = request.Replace("$requestPath$", string.Format("\"{0}\"", pathHttp));
+                                tcpSettings.header.request = Utils.FromJson<object>(request);
+                            }
+                            else if (iobound.Equals("in"))
+                            {
+                                //string response = Utils.GetEmbedText(Global.v2raySampleHttpresponseFileName);
+                                //tcpSettings.header.response = Utils.FromJson<object>(response);
+                            }
 
-                            tcpSettings.header.request = Utils.FromJson<object>(request);
-                            tcpSettings.header.response = Utils.FromJson<object>(response);
                             streamSettings.tcpSettings = tcpSettings;
                         }
                         break;
@@ -1150,7 +1164,7 @@ namespace v2rayN.Handler
                         result = Utils.Base64Decode(result);
                     }
 
-                   
+
                     string[] arr21 = result.Split(':');
                     int indexPort = result.LastIndexOf(":");
                     if (arr21.Length != 2 || indexPort < 0)

@@ -53,7 +53,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>v2ray.ico</ApplicationIcon>
+    <ApplicationIcon>v2rayN.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>BD431FE78E8A6683106E7110882AE5C41CBF5C60</ManifestCertificateThumbprint>
@@ -312,7 +312,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ResUI.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="v2ray.ico" />
+    <EmbeddedResource Include="v2rayN.ico" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Sample\SampleClientConfig.txt" />
