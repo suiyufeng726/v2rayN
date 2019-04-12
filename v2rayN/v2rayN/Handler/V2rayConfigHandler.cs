@@ -478,6 +478,10 @@ namespace v2rayN.Handler
 
                         TlsSettings tlsSettings = new TlsSettings();
                         tlsSettings.allowInsecure = config.allowInsecure();
+                        if (!string.IsNullOrWhiteSpace(host2))
+                        {
+                            tlsSettings.serverName = host2;
+                        }
                         streamSettings.tlsSettings = tlsSettings;
                         break;
                     //h2
